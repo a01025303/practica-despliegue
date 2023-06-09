@@ -2,7 +2,7 @@ name: Lambda function CI/CD
 
 on: 
     push: 
-        branches: ["A01025303"]
+        branches: ["main"]
     pull_request: 
         branches: ["main"]
 
@@ -24,7 +24,6 @@ jobs:
               if [ -f python3/requirements.txt ]; then pip install -r python3/requirements.txt; fi
 
           - name: Linteo con flake8
-            if: ${{ github.event_name == 'pull_request' }}
             run: |
               flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
               flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
